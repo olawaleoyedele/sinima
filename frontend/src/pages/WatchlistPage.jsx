@@ -11,7 +11,7 @@ const WatchlistPage = () => {
     const fetchWatchlist = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`${BASE_URL}/api/watchlist`, {
+        const res = await axios.get(`${BASE_URL}/watchlist`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
