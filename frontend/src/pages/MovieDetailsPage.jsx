@@ -101,6 +101,7 @@ const MovieDetailsPage = () => {
             setReviewInput("");
             const updated = await getReviews(id);
             setReviews(updated);
+            toast.success("Review added successfully!", { id: toastId });
         } catch {
             toast.error("Failed to add review", { id: toastId });
         } finally {
