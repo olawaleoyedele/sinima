@@ -7,7 +7,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const WatchlistPage = () => {
   const [movies, setMovies] = useState([]);
-
+  
   useEffect(() => {
     const fetchWatchlist = async () => {
       const toastId = toast.loading("Loading watchlist...");
@@ -19,9 +19,10 @@ const WatchlistPage = () => {
           },
         });
         setMovies(res.data);
+        toast.success("Watchlist loaded", { id: toastId });
       } catch (err) {
-        console.error(err);
-        toast.error("Failed to load watchlist");
+        
+        toast.error("Failed to load watchlist", { id: toastId });
       }
     };
 

@@ -298,16 +298,15 @@ const MovieDetailsPage = () => {
                     <div
                         className="flex overflow-x-auto space-x-4 px-1"
                         style={{
-                            scrollbarWidth: "none", // Firefox
-                            msOverflowStyle: "none", // IE 10+
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none",
                             overflowY: "hidden",
                         }}
                     >
                         {recommendations.map((rec) => (
                             <Link to={`/movie/${rec.id}`} key={rec.id}>
                                 <div
-                                    className="min-w-[150px] sm:min-w-[180px] bg-[#111] rounded-xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg"
-                                    style={{ height: "300px" }} // fixed height for all cards
+                                    className="w-[180px] h-[300px] bg-[#111] rounded-xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg flex-shrink-0"
                                 >
                                     <div className="w-full h-[250px] bg-black">
                                         <img
@@ -320,7 +319,7 @@ const MovieDetailsPage = () => {
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    <div className="p-2 h-[50px] flex flex-col justify-center">
+                                    <div className="p-2 h-[50px]">
                                         <h3 className="text-white text-sm font-semibold truncate">
                                             {rec.title}
                                         </h3>

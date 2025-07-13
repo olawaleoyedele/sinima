@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
+const BACKEND_URL = process.env.REACT_APP_BASE_URL;
 
 /* ───────── Movie Core ───────── */
 export const getMovieDetails = async (id) =>
@@ -22,7 +23,7 @@ export const getActionMovies = async () =>
   })).data.results;
 
 /* ───────── Search / Discover ───────── */
-const API_BASE = "/api/movies"; // your own backend proxy
+const API_BASE = `${BACKEND_URL}/movies`; // your own backend proxy
 export const searchMovies = async (filters) =>
   (await axios.get(`${API_BASE}/search`, { params: filters })).data;
 
