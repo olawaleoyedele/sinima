@@ -84,6 +84,7 @@ const MovieDetailsPage = () => {
             setUserRatingState(value);
             const avg = await getAverageRating(id);
             setAvgRating(avg.avg_rating);
+            toast.success("Rating saved!", { id: toastId });
         } catch {
             toast.error("Failed to save rating", { id: toastId });
         }
