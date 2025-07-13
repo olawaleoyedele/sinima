@@ -23,7 +23,7 @@ const Footer = () => (
         <h4 className="font-semibold text-white mb-2">Contact</h4>
         <ul className="space-y-1 text-sm">
           <li>Email: <a href="mailto:support@sinimá.com" className="hover:text-white transition">support@sinimá.com</a></li>
-          <li>GitHub: <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">movieapp</a></li>
+          <li>GitHub: <a href="https://github.com/olawaleoyedele/sinima" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Sinima</a></li>
         </ul>
       </div>
     </div>

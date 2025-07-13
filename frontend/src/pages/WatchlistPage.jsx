@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const WatchlistPage = () => {
   const [movies, setMovies] = useState([]);
 
@@ -9,7 +11,7 @@ const WatchlistPage = () => {
     const fetchWatchlist = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/watchlist", {
+        const res = await axios.get(`${BASE_URL}/api/watchlist`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

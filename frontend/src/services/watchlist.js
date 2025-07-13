@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 export const getWatchlist = async (token) => {
-  const res = await axios.get("http://localhost:5000/api/watchlist", {
+  const res = await axios.get(`${BASE_URL}/watchlist`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return res.data;
@@ -9,14 +11,14 @@ export const getWatchlist = async (token) => {
 
 export const addToWatchlist = async (movie, token) => {
   return axios.post(
-    "http://localhost:5000/api/watchlist",
+    `${BASE_URL}/watchlist`,
     movie,
     { headers: { Authorization: `Bearer ${token}` } }
   );
 };
 
 export const removeFromWatchlist = async (movie_id, token) => {
-  return axios.delete(`http://localhost:5000/api/watchlist/${movie_id}`, {
+  return axios.delete(`${BASE_URL}/watchlist/${movie_id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };

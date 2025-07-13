@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import handleRegisterError from "../utils/handleRegisterError";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const RegisterPage = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
@@ -15,7 +17,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", form);
+      await axios.post(`${BASE_URL}/auth/register`, form);
       alert("Registration successful!");
       navigate("/login");
     } catch (err) {
