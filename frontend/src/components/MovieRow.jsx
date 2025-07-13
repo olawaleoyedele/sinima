@@ -25,10 +25,11 @@ const MovieRow = ({ title, fetchMoviesFn }) => {
           <Link key={movie.id} to={`/movie/${movie.id}`} className="block">
             <div className="min-w-[160px] max-w-[180px] flex-shrink-0 hover:scale-105 transition-transform duration-300">
               <img
+                className="rounded-lg transition-transform duration-300 hover:scale-110"
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
-                className="rounded-lg shadow-lg"
               />
+
             </div>
           </Link>
         ))}

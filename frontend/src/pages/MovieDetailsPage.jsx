@@ -189,8 +189,8 @@ const MovieDetailsPage = () => {
                         <div className="text-sm text-gray-400 space-y-1">
                             <div><strong>Released:</strong> {movie.release_date}</div>
                             <div><strong>Genres:</strong> {movie.genres.map((g) => g.name).join(", ")}</div>
-                            <div><strong>TMDB Rating:</strong> ⭐ {movie.vote_average}</div>
-                            <div><strong>Average User Rating:</strong> {avgRating ? `⭐ ${avgRating}` : "No ratings yet"}</div>
+                            <div><strong>TMDB Rating:</strong> ⭐ {Math.floor(movie.vote_average)}</div>
+                            <div><strong>Average User Rating:</strong> {avgRating ? `⭐ ${Math.floor(avgRating)}` : "No ratings yet"}</div>
                         </div>
                         {isLoggedIn && (
                             <div>

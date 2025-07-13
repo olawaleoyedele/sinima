@@ -140,10 +140,10 @@ const ExplorePage = () => {
         </button>
       </form>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {(Array.isArray(movies) ? movies : []).map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg shadow hover:scale-105 transition-transform duration-300">
+            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 shadow-lg hover:shadow-pink-500/20">
               <img
                 src={
                   movie.poster_path
@@ -153,10 +153,10 @@ const ExplorePage = () => {
                 alt={movie.title}
                 className="rounded-t-lg"
               />
-              <div className="p-3">
-                <h3 className="font-semibold text-lg">{movie.title}</h3>
+              <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 py-4">
+                <h3 className="text-md font-semibold truncate">{movie.title}</h3>
                 <p className="text-sm text-gray-300">
-                  {movie.release_date?.slice(0, 4)} • ⭐ {movie.vote_average}
+                  {movie.release_date?.slice(0, 4)} • ⭐ {Math.floor(movie.vote_average)}
                 </p>
               </div>
             </div>

@@ -36,7 +36,7 @@ const WatchlistPage = () => {
       {movies.length === 0 ? (
         <p className="text-center text-gray-400">Your watchlist is empty.</p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {movies.map((movie) => (
             <Link key={movie.movie_id} to={`/movie/${movie.movie_id}`}>
               <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 shadow-lg hover:shadow-pink-500/20">
@@ -49,7 +49,7 @@ const WatchlistPage = () => {
                   alt={movie.movie_title}
                   className="w-full h-[300px] object-cover"
                 />
-                <div className="p-3">
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 py-4">
                   <h3 className="font-semibold text-lg text-white truncate">{movie.movie_title}</h3>
                 </div>
               </div>
