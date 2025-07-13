@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/profile';
+const API_URL = `${process.env.REACT_APP_BASE_URL}/profile`;
 
 export const getProfile = async (token) => {
   const res = await axios.get(API_URL, {
