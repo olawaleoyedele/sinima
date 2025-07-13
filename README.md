@@ -41,6 +41,6 @@ Backend API: [https://sinima-mwcr.onrender.com/api](https://sinima-mwcr.onrender
 
 ## 👩‍💻 Author
 
-Built with ❤️ by Abdullah Oyede;e 
+Built with ❤️ by Abdullah Oyedele
+---
 3MTT Capstone Project
-

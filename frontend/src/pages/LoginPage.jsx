@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -12,16 +13,19 @@ const LoginPage = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  
+  // Handle form submission
   const handleSubmit = async (e) => {
+    const toastId = toast.loading("Logging in...");
     e.preventDefault();
+
     try {
       const res = await axios.post(`${BASE_URL}/auth/login`, form);
       localStorage.setItem("token", res.data.token);
-      alert("Login successful!");
+      toast.success("Login successful!", { id: toastId });
       navigate("/");
     } catch (err) {
-      console.error(err);
-      alert("Invalid login");
+      toast.error("Invalid login", { id: toastId });
     }
   };
 

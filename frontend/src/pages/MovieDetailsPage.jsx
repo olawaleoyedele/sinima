@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import {
     getMovieDetails,
     getMovieTrailer,
@@ -76,21 +77,23 @@ const MovieDetailsPage = () => {
     }, [id, token, isLoggedIn]);
 
     const handleSetRating = async (value) => {
-        if (!isLoggedIn) return alert("Please log in first");
+        const toastId = toast.loading("Saving rating...");
+        if (!isLoggedIn) return toast.error("Please log in first", { id: toastId });
         try {
             await setUserRating(id, value, token);
             setUserRatingState(value);
             const avg = await getAverageRating(id);
             setAvgRating(avg.avg_rating);
         } catch {
-            alert("Failed to save rating");
+            toast.error("Failed to save rating", { id: toastId });
         }
     };
 
     const handleAddReview = async (e) => {
+        const toastId = toast.loading("Adding review...");
         e.preventDefault();
-        if (!isLoggedIn) return alert("Please log in first");
-        if (!reviewInput.trim()) return alert("Review cannot be empty");
+        if (!isLoggedIn) return toast.error("Please log in first", { id: toastId });
+        if (!reviewInput.trim()) return toast.error("Review cannot be empty", { id: toastId });
 
         setReviewLoading(true);
         try {
@@ -99,18 +102,19 @@ const MovieDetailsPage = () => {
             const updated = await getReviews(id);
             setReviews(updated);
         } catch {
-            alert("Failed to add review");
+            toast.error("Failed to add review", { id: toastId });
         } finally {
             setReviewLoading(false);
         }
     };
 
     const toggleFavourite = async () => {
+        const toastId = toast.loading("Loading...");
         try {
             if (inFavourites) {
                 await removeFromFavourites(movie.id, token);
                 setInFavourites(false);
-                alert("Removed from favourites");
+                toast.success("Removed from favourites", { id: toastId });
             } else {
                 await addToFavourites(
                     {
@@ -121,19 +125,20 @@ const MovieDetailsPage = () => {
                     token
                 );
                 setInFavourites(true);
-                alert("Added to favourites");
+                toast.success("Added to favourites", { id: toastId });
             }
         } catch {
-            alert("Failed to toggle favourite");
+            toast.error("Failed to toggle favourite", { id: toastId });
         }
     };
 
     const toggleWatchlist = async () => {
+        const toastId = toast.loading("Loading...");
         try {
             if (inWatchlist) {
                 await removeFromWatchlist(movie.id, token);
                 setInWatchlist(false);
-                alert("Removed from watchlist");
+                toast.success("Removed from watchlist", { id: toastId });
             } else {
                 await addToWatchlist(
                     {
@@ -144,10 +149,10 @@ const MovieDetailsPage = () => {
                     token
                 );
                 setInWatchlist(true);
-                alert("Added to watchlist");
+                toast.success("Added to watchlist", { id: toastId });
             }
         } catch {
-            alert("Failed to toggle watchlist");
+            toast.error("Failed to toggle watchlist", { id: toastId });
         }
     };
 

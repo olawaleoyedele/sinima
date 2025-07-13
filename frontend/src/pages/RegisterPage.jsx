@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import handleRegisterError from "../utils/handleRegisterError";
+import { toast } from "react-hot-toast";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -15,10 +16,11 @@ const RegisterPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
+    const toastId = toast.loading("Loading...");
     e.preventDefault();
     try {
       await axios.post(`${BASE_URL}/auth/register`, form);
-      alert("Registration successful!");
+      toast.success("Registration successful!");
       navigate("/login");
     } catch (err) {
       console.error(err);

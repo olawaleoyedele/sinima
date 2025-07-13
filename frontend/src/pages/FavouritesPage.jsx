@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getFavourites } from "../services/favourites";
+import { toast } from "react-hot-toast";
 
 const FavouritesPage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchFavourites = async () => {
+      const toastId = toast.loading("Loading favourites...");
+      
       try {
         const token = localStorage.getItem("token");
         if (!token) return;
         const res = await getFavourites(token);
         setMovies(res);
       } catch (err) {
-        console.error(err);
-        alert("Failed to load favourites");
+        toast.error("Failed to load favourites", { id: toastId });
       }
     };
     fetchFavourites();

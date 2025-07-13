@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -9,6 +10,7 @@ const WatchlistPage = () => {
 
   useEffect(() => {
     const fetchWatchlist = async () => {
+      const toastId = toast.loading("Loading watchlist...");
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(`${BASE_URL}/watchlist`, {
@@ -19,7 +21,7 @@ const WatchlistPage = () => {
         setMovies(res.data);
       } catch (err) {
         console.error(err);
-        alert("Failed to load watchlist");
+        toast.error("Failed to load watchlist");
       }
     };
 
