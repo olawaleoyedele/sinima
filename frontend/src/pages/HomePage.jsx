@@ -20,7 +20,7 @@ const HomePage = () => {
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-90"></div>
-                <div className="absolute bottom-20 left-10 max-w-xl">
+                <div className="absolute bottom-20 left-5 max-w-xl">
                     <h1 className="text-5xl font-extrabold mb-4">Fight Club</h1>
                     <p className="text-lg mb-6 max-w-md">
                         An insomniac office worker and a devil-may-care soapmaker form an underground fight club...
